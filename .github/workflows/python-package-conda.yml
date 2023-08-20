@@ -1,0 +1,36 @@
+跳到内容
+
+法典
+问题
+更多
+服务器
+服务器 #16
+此运行的工作流文件
+.github/workflows/server.yml at f993946
+名称：服务器
+
+开：
+  workflow_dispatch：
+
+工作：
+  服务器：
+    运行时间：Ubuntu-latest
+
+    步骤：
+      - 用途：操作/checkout@v3
+
+      - 名称： 收集
+        运行： |
+sudo apt-get 更新
+sudo apt-get install zstd wget openjdk-8-jdk
+WGET https://nya.globalslb.net/natfrp/client/launcher-unix/3.0.0/natfrp-service_linux_amd64.tar.zst
+unzstd natfrp-service_linux_amd64.tar.zst
+TAR XVF NATFRp-service_linux_amd64.tar
+CHMOD 0755 *
+WGET https://piston-data.mojang.com/v1/objects/f00c294a1576e03fddcac777c3cf4c7d404c4ba4/server.jar
+      
+      - 名称：运行
+        运行： |
+python3 start.py “${{ secrets.APIKEY }}：${{ secrets.FRPID }}”
+  
+更新服务器属性 ·辰皮12/服务器-test@f993946
